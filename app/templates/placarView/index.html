@@ -1,0 +1,193 @@
+{% extends "shared/base.html" %}
+{% block content %}
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="control-admin position-relative">
+    <img src="./static/img/player_1_control.png" height="400">
+  </div>
+  <div class="screen flex-column d-flex justify-content-center align-items-center">
+
+    <div class="d-flex justify-content-center align-items-center v-100 ">
+      <h2>Score Manager</h2>
+
+    </div>
+
+
+    <div class="d-flex justify-content-center align-items-center v-100 ">
+      <div class="card card-p1 m-1">
+        <div class="card-body">
+          <h5 class="card-title player1-title">Player 1</h5>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="player1_name" placeholder=" " value="{{player1.name}}">
+            <label for="player1-name">Player 1</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="number" min="0" max="8" step="1" class="form-control" id="player1_score"
+              value="{{player1.score}}" placeholder=" ">
+            <label for="player1-score">Score</label>
+          </div>
+
+        </div>
+      </div>
+      <div class="card card-p2 m-1">
+        <div class="card-body">
+          <h5 class="card-title player2-title">Player 2</h5>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="player2_name" placeholder=" " value="{{player2.name}}">
+            <label for="player2-name">Player 2</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="number" min="0" step="1" class="form-control" max="8" placeholder=" " id="player2_score"
+              value="{{player2.score}}">
+            <label for="player2-score">Score</label>
+          </div>
+
+        </div>
+      </div>
+      <div class="card card-p1 m-1">
+        <div class="card-body">
+          <h5 class="card-title player1-title">Player 3</h5>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="player3_name" placeholder=" " value="{{player3.name}}">
+            <label for="player1-name">Player 3</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="number" min="0" max="8" step="1" class="form-control" id="player3_score"
+              value="{{player3.score}}" placeholder=" ">
+            <label for="player3-score">Score</label>
+          </div>
+
+        </div>
+      </div>
+      <div class="card card-p2 m-1">
+        <div class="card-body">
+          <h5 class="card-title player2-title">Player 4</h5>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="player4_name" placeholder=" " value="{{player4.name}}">
+            <label for="player4-name">Player 2</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="number" min="0" step="1" class="form-control" max="8" placeholder=" " id="player4_score"
+              value="{{player4.score}}">
+            <label for="player4-score">Score</label>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div style="display:none;" class=" justify-content-center align-items-center w-100 mt-2">
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupFile01">Upload</label>
+        <input type="file" class="form-control" id="inputGroupFile01">
+      </div>
+      
+      <!-- <div class="w-50"> -->
+
+        <!-- <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
+          <input type="radio" class="btn-check" name="score" id="Sports" autocomplete="off" checked
+            onclick="$('#pills-home-tab').click()">
+          <label class="btn btn-outline-primary" for="Sports">Sports</label>
+
+          <input type="radio" class="btn-check" name="score" id="Action" autocomplete="off"
+            onclick="$('#pills-profile-tab').click()">
+          <label class="btn btn-outline-primary" for="Action">Action</label>
+
+          <input type="radio" class="btn-check" name="score" id="Race" autocomplete="off"
+            onclick="$('#pills-contact-tab').click()">
+          <label class="btn btn-outline-primary" for="Race">Race</label>
+
+          <input type="radio" class="btn-check" name="score" id="Custom" autocomplete="off"
+            onclick="$('#pills-disabled-tab').click()">
+          <label class="btn btn-outline-primary" for="Custom">Custom</label>
+        </div> -->
+
+
+
+      <!-- </div> -->
+
+      <!-- <div class="w-50 "> -->
+      
+        <!-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="display: none;">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+              type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+              type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
+              type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled"
+              type="button" role="tab" aria-controls="pills-disabled" aria-selected="false">Disabled</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
+            tabindex="0">
+            <div class="alert alert-light mt-3 ms-2" role="alert">
+              
+              <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                <label class="btn btn-outline-light text-dark" for="btnradio1">
+                  <img src="./static/img/basketball.png" height="40">
+                </label>
+              
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                <label class="btn btn-outline-light text-dark" for="btnradio2">
+                  <img src="./static/img/soccer.png" height="40">
+                </label>
+              
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                <label class="btn btn btn-outline-light text-dark" for="btnradio3">
+                  <img src="./static/img/golf.png" height="40">
+                </label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+                <label class="btn btn btn-outline-light text-dark" for="btnradio3">
+                  <img src="./static/img/american.png" height="40">
+                </label>
+              </div>
+
+
+
+            </div>
+          </div>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+            tabindex="0">
+            <div class="alert alert-light mt-3 ms-2" role="alert">
+              home
+            </div>
+          </div>
+          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"
+            tabindex="0">
+            <div class="alert alert-light mt-3 ms-2" role="alert">
+              home
+            </div>
+          </div>
+          <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab"
+            tabindex="0">
+            <div class="alert alert-light mt-3 ms-2" role="alert">
+              home
+            </div>
+          </div>
+        </div> -->
+
+
+
+      <!-- </div> -->
+
+    </div>
+  </div>
+
+
+
+  <div class="control-admin position-relative">
+    <img src="./static/img/player_2_control.png" height="400">
+  </div>
+</div>
+<script src="../static/js/socket-admin.js"></script>
+{% endblock %}

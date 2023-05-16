@@ -1,0 +1,90 @@
+.bd-video-ratios .ratio {
+    display: inline-block;
+    width: 460px;
+    color: var(--bs-secondary-color);
+    background-color: var(--bs-tertiary-bg);
+    border: var(--bs-border-width) solid var(--bs-border-color);
+}
+
+:root{
+    --v:#E60012;
+    --a:#00C5FF;
+
+}
+body {
+    font-family: 'Poppins', sans-serif;
+  }
+.control{
+    height: 385px;
+    width: 140px;
+    padding-top:40px;
+  
+}
+/* .player1{
+    background-color: var(--v);
+    border-top-left-radius:50px ;
+    border-bottom-left-radius:50px ;
+} */
+
+.player1-title{
+    color: var(--v)
+}
+.player2-title{
+    color: var(--a)
+}
+
+.control img{
+  
+}
+.title-control {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    border-top-left-radius:32px ;
+    border-top-right-radius:32px ;
+    color: whitesmoke;
+    font-size: 2rem;
+    
+}
+
+.screen{
+    height: 380px;
+    border: 1px solid rgba(0,0,0,0.05);
+    background-color: #f5f5f5;
+    margin-left: -30px;
+    margin-right: -30px;
+    padding: 20px 80px;
+    border-radius: 20px;
+}
+
+.card{
+    width: 100%;
+}
+
+.score-container{
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    margin: 8px 8px 0px 8px;
+}
+
+.default-score{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: darkorange;
+}
+
+.score{
+   
+    width: 550px;
+    display: flex;
+    position: absolute;
+    height: 200px;
+    bottom:50px;
+}
