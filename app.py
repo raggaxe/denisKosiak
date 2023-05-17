@@ -13,8 +13,9 @@ repository = BaseRepository(MongoConfig().get_connect())
 load_dotenv()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv("APP_SECRET_KEY")
-app.config['SERVER_NAME'] = '0.0.0.0'
+# app.config['SERVER_NAME'] = '0.0.0.0'
 socketio = SocketIO(app, async_handlers=True)
+
 
 
 @app.route('/placarView')
