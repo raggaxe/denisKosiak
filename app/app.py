@@ -210,7 +210,10 @@ def set_score4(data):
 
 @app.route('/player1')
 def player1():
-    return render_template('placarView/player1.html' , player = repository.find_one('players', {'position':'1'}) )
+    try:
+        return render_template('placarView/player1.html' , player = repository.find_one('players', {'position':'1'}) )
+    except  Exception as e:
+        print(e)
 @app.route('/player2')
 def player2():
     return render_template('placarView/player2.html', player = repository.find_one('players', {'position':'2'}))
