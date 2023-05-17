@@ -229,7 +229,9 @@ def player4():
 def score_template():
     return render_template('shared/score.html')
 
-
+@app.route('/')
+def home():
+    return 'HELLO'
 
 @app.route('/denis',methods=['GET', 'POST'])
 def josh():
