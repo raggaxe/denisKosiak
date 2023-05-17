@@ -13,6 +13,7 @@ repository = BaseRepository(MongoConfig().get_connect())
 load_dotenv()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv("APP_SECRET_KEY")
+app.config['SERVER_NAME'] = '0.0.0.0'
 socketio = SocketIO(app, async_handlers=True)
 
 
@@ -29,25 +30,7 @@ def placarView():
     
 @socketio.on('connect')
 def handle_connect():
-    # emit('player1_name')
-    # emit('player2_name')
     print('Client connected')
-
-
-
-# @socketio.on('getPlayers')
-# def getPlayer():
-   
-#     players_1 = repository.find_one('players', {'position':'1'})
-#     players_2 = repository.find_one('players', {'position':'2'})
-#     if players_1 is not None:
-#         print('achou')
-#         emit('getPlayer_1',{'name':players_1['name'], 'score': players_1['score'] },broadcast=True)
-#     if players_2 is not None:
-#         print('achou')
-#         emit('getPlayer_2',{'name':players_2['name'], 'score': players_2['score'] },broadcast=True)
-
-
 
 @socketio.on('set_player1')
 def set_player1(data):
@@ -250,6 +233,5 @@ def josh():
     return render_template('twitch.html')
 
 if __name__ == '__main__':
-    socketio.run(app, port=5000,
-                 debug=True)
+    socketio.run(app,debug=True)
  
