@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request,send_from_directory, current_app, redirect, url_for
 from flask_socketio import *
 from dotenv import load_dotenv
 import os
@@ -6,7 +6,7 @@ from model.Player import Player
 from Configs.MongoConfig import MongoConfig
 from repository.BaseRepository import BaseRepository
 from bson import json_util, ObjectId
-
+from werkzeug.utils import secure_filename
 
 repository = BaseRepository(MongoConfig().get_connect())
 
@@ -16,6 +16,20 @@ app.config['SECRET_KEY'] = os.getenv("APP_SECRET_KEY")
 # app.config['SERVER_NAME'] = '0.0.0.0'
 socketio = SocketIO(app, async_handlers=True)
 
+
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@app.route('/setImage', methods=['POST', 'GET'])
+def setImage():
+    file = request.files.get('file')
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+    return redirect(url_for('placarView'))
 
 
 @app.route('/placarView')
@@ -228,7 +242,12 @@ def player4():
 
 @app.route('/score_template')
 def score_template():
-    return render_template('shared/score.html')
+    file = False
+    score_filename = repository.find_one('configs', {'status': True})
+    if score_filename is not None:
+        file = score_filename['filename']
+    
+    return render_template('shared/score.html', file=file)
 
 @app.route('/')
 def home():
@@ -237,6 +256,13 @@ def home():
 @app.route('/denis',methods=['GET', 'POST'])
 def josh():
     return render_template('twitch.html')
+
+############### fotos uploads ##################
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(current_app.config['UPLOAD_FOLDER'], filename)
+
+
 
 if __name__ == '__main__':
     # socketio.run(app,debug=True)
