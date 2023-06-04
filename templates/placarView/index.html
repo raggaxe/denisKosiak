@@ -1,194 +1,270 @@
 {% extends "shared/base.html" %}
 {% block content %}
 
-<div class="d-flex justify-content-center align-items-center vh-100">
-  <div class="control-admin position-relative">
-    <img src="./static/img/player_1_control.png" height="400">
-  </div>
-  <div class="screen flex-column d-flex justify-content-center align-items-center">
 
-    <div class="d-flex justify-content-center align-items-center v-100 ">
-      <h2>Score Manager</h2>
+<nav class="navbar fixed-top bg-white fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
 
-    </div>
+      <img src="./static/img/HHwordmark.png" alt="" height="50">
+    </a>
+    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <img src="./static/img/FullLogo.png" alt="" height="50">
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Main Settings</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <form action="/configs" method="POST" class="offcanvas-body">
 
-
-    <div class="d-flex justify-content-center align-items-center v-100 ">
-      <div class="card card-p1 m-1">
-        <div class="card-body">
-          <h5 class="card-title player1-title">Player 1</h5>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="player1_name" placeholder=" " value="{{player1.name}}">
-            <label for="player1-name">Player 1</label>
+        <div class="mt-4">
+          <input type="hidden" id="input_player" value="{% if configs.players %}{{configs.players}}{%else%}{%endif%}">
+          <h6><i class="bi bi-joystick me-2"></i> Select number players:</h6>
+          <div class="form-floating">
+            <select class="form-select" id="select_player" name="players" aria-label="Select number players">
+       
+              <option selected disabled>Select players</option>
+              <option value="1" >One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+              <option value="4">Four</option>
+              
+            </select>
+            <label for="floatingSelect">Players</label>
           </div>
-          <div class="form-floating mb-3">
-            <input type="number" min="0" max="8" step="1" class="form-control" id="player1_score"
-              value="{{player1.score}}" placeholder=" ">
-            <label for="player1-score">Score</label>
+        </div>
+
+        <div class="mt-4">
+
+          <h6><i class="bi bi-controller me-2"></i>Select game mode:</h6>
+          <input type="hidden" id="input_game" value="{% if configs.game %}{{configs.game}}{%else%}{%endif%}">
+        
+          <div class="form-floating">
+            <select class="form-select" id="select_game" name="game" aria-label="Select game mode">
+              <option selected disabled>Open this select menu</option>
+              <option value="Sport">Sport</option>
+              <option value="Race">Race</option>
+              <option value="FPS">FPS</option>
+
+            </select>
+            <label for="floatingSelect">Players</label>
           </div>
 
         </div>
-      </div>
-      <div class="card card-p2 m-1">
-        <div class="card-body">
-          <h5 class="card-title player2-title">Player 2</h5>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="player2_name" placeholder=" " value="{{player2.name}}">
-            <label for="player2-name">Player 2</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="number" min="0" step="1" class="form-control" max="8" placeholder=" " id="player2_score"
-              value="{{player2.score}}">
-            <label for="player2-score">Score</label>
-          </div>
 
-        </div>
-      </div>
-      <div class="card card-p1 m-1">
-        <div class="card-body">
-          <h5 class="card-title player1-title">Player 3</h5>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="player3_name" placeholder=" " value="{{player3.name}}">
-            <label for="player1-name">Player 3</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="number" min="0" max="8" step="1" class="form-control" id="player3_score"
-              value="{{player3.score}}" placeholder=" ">
-            <label for="player3-score">Score</label>
-          </div>
-
-        </div>
-      </div>
-      <div class="card card-p2 m-1">
-        <div class="card-body">
-          <h5 class="card-title player2-title">Player 4</h5>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="player4_name" placeholder=" " value="{{player4.name}}">
-            <label for="player4-name">Player 2</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="number" min="0" step="1" class="form-control" max="8" placeholder=" " id="player4_score"
-              value="{{player4.score}}">
-            <label for="player4-score">Score</label>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <div  class=" justify-content-center align-items-center w-100 mt-2">
-     
-      <div class="input-group mb-3">
-  <input type="file" class="form-control" id="inputGroupFile02">
-  <label class="input-group-text" for="inputGroupFile02">Upload</label>
-</div>
+        <div class="d-grid gap-2 mt-4">
+          <button class="btn btn-primary" type="submit">Start Game</button>
       
-      <!-- <div class="w-50"> -->
+        </div>
+
+
+
+       
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<div class="d-flex flex-column justify-content-center align-items-center  vh-100">
+
+  <div class="d-flex justify-content-center align-items-center colored">
+
+    <div class="control-admin position-relative">
+      <img src="./static/img/player_1_control.png" height="400">
+    </div>
+    <div class="screen flex-column d-flex justify-content-center align-items-center">
+
+      <div class="d-flex justify-content-center align-items-center v-100 mb-2">
+        <h3>Score Manager</h3>
+      </div>
+
+
+      <div class="d-flex flex-wrap justify-content-center align-items-center v-100 w-100">
+        <div class="card card-p1 m-1" style="display: none;">
+          <div class="card-body">
+            <h5 class="card-title player1-title">Player 1</h5>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="player1_name" placeholder=" " value="{{player1.name}}">
+              <label for="player1-name">Player 1</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="number" min="0" max="8" step="1" class="form-control" id="player1_score"
+                value="{{player1.score}}" placeholder=" ">
+              <label for="player1-score">Score</label>
+            </div>
+
+          </div>
+        </div>
+        <div class="card card-p2 m-1" style="display: none;">
+          <div class="card-body">
+            <h5 class="card-title player2-title">Player 2</h5>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="player2_name" placeholder=" " value="{{player2.name}}">
+              <label for="player2-name">Player 2</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="number" min="0" step="1" class="form-control" max="8" placeholder=" " id="player2_score"
+                value="{{player2.score}}">
+              <label for="player2-score">Score</label>
+            </div>
+
+          </div>
+        </div>
+        <div class="card card-p3 m-1" style="display: none;">
+          <div class="card-body">
+            <h5 class="card-title player3-title">Player 3</h5>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="player3_name" placeholder=" " value="{{player3.name}}">
+              <label for="player3-name">Player 3</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="number" min="0" max="8" step="1" class="form-control" id="player3_score"
+                value="{{player3.score}}" placeholder=" ">
+              <label for="player3-score">Score</label>
+            </div>
+
+          </div>
+        </div>
+        <div class="card card-p4 m-1" style="display: none;">
+          <div class="card-body">
+            <h5 class="card-title player4-title">Player 4</h5>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="player4_name" placeholder=" " value="{{player4.name}}">
+              <label for="player4-name">Player 2</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="number" min="0" step="1" class="form-control" max="8" placeholder=" " id="player4_score"
+                value="{{player4.score}}">
+              <label for="player4-score">Score</label>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class=" justify-content-center align-items-center w-100 mt-2">
+
+       
+        <!-- <div class="w-50"> -->
 
         <!-- <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
-          <input type="radio" class="btn-check" name="score" id="Sports" autocomplete="off" checked
-            onclick="$('#pills-home-tab').click()">
-          <label class="btn btn-outline-primary" for="Sports">Sports</label>
+            <input type="radio" class="btn-check" name="score" id="Sports" autocomplete="off" checked
+              onclick="$('#pills-home-tab').click()">
+            <label class="btn btn-outline-primary" for="Sports">Sports</label>
 
-          <input type="radio" class="btn-check" name="score" id="Action" autocomplete="off"
-            onclick="$('#pills-profile-tab').click()">
-          <label class="btn btn-outline-primary" for="Action">Action</label>
+            <input type="radio" class="btn-check" name="score" id="Action" autocomplete="off"
+              onclick="$('#pills-profile-tab').click()">
+            <label class="btn btn-outline-primary" for="Action">Action</label>
 
-          <input type="radio" class="btn-check" name="score" id="Race" autocomplete="off"
-            onclick="$('#pills-contact-tab').click()">
-          <label class="btn btn-outline-primary" for="Race">Race</label>
+            <input type="radio" class="btn-check" name="score" id="Race" autocomplete="off"
+              onclick="$('#pills-contact-tab').click()">
+            <label class="btn btn-outline-primary" for="Race">Race</label>
 
-          <input type="radio" class="btn-check" name="score" id="Custom" autocomplete="off"
-            onclick="$('#pills-disabled-tab').click()">
-          <label class="btn btn-outline-primary" for="Custom">Custom</label>
-        </div> -->
+            <input type="radio" class="btn-check" name="score" id="Custom" autocomplete="off"
+              onclick="$('#pills-disabled-tab').click()">
+            <label class="btn btn-outline-primary" for="Custom">Custom</label>
+          </div> -->
 
 
 
-      <!-- </div> -->
+        <!-- </div> -->
 
-      <!-- <div class="w-50 "> -->
-      
+        <!-- <div class="w-50 "> -->
+
         <!-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="display: none;">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-              type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-              type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
-              type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled"
-              type="button" role="tab" aria-controls="pills-disabled" aria-selected="false">Disabled</button>
-          </li>
-        </ul>
-        <div class="tab-content" id="pills-tabContent">
-          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
-            tabindex="0">
-            <div class="alert alert-light mt-3 ms-2" role="alert">
-              
-              <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                <label class="btn btn-outline-light text-dark" for="btnradio1">
-                  <img src="./static/img/basketball.png" height="40">
-                </label>
-              
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                <label class="btn btn-outline-light text-dark" for="btnradio2">
-                  <img src="./static/img/soccer.png" height="40">
-                </label>
-              
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                <label class="btn btn btn-outline-light text-dark" for="btnradio3">
-                  <img src="./static/img/golf.png" height="40">
-                </label>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+                type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled"
+                type="button" role="tab" aria-controls="pills-disabled" aria-selected="false">Disabled</button>
+            </li>
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
+              tabindex="0">
+              <div class="alert alert-light mt-3 ms-2" role="alert">
+                
+                <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                  <label class="btn btn-outline-light text-dark" for="btnradio1">
+                    <img src="./static/img/basketball.png" height="40">
+                  </label>
+                
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                  <label class="btn btn-outline-light text-dark" for="btnradio2">
+                    <img src="./static/img/soccer.png" height="40">
+                  </label>
+                
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                  <label class="btn btn btn-outline-light text-dark" for="btnradio3">
+                    <img src="./static/img/golf.png" height="40">
+                  </label>
 
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-                <label class="btn btn btn-outline-light text-dark" for="btnradio3">
-                  <img src="./static/img/american.png" height="40">
-                </label>
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+                  <label class="btn btn btn-outline-light text-dark" for="btnradio3">
+                    <img src="./static/img/american.png" height="40">
+                  </label>
+                </div>
+
+
+
               </div>
-
-
-
             </div>
-          </div>
-          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
-            tabindex="0">
-            <div class="alert alert-light mt-3 ms-2" role="alert">
-              home
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+              tabindex="0">
+              <div class="alert alert-light mt-3 ms-2" role="alert">
+                home
+              </div>
             </div>
-          </div>
-          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"
-            tabindex="0">
-            <div class="alert alert-light mt-3 ms-2" role="alert">
-              home
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"
+              tabindex="0">
+              <div class="alert alert-light mt-3 ms-2" role="alert">
+                home
+              </div>
             </div>
-          </div>
-          <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab"
-            tabindex="0">
-            <div class="alert alert-light mt-3 ms-2" role="alert">
-              home
+            <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab"
+              tabindex="0">
+              <div class="alert alert-light mt-3 ms-2" role="alert">
+                home
+              </div>
             </div>
-          </div>
-        </div> -->
+          </div> -->
 
 
 
-      <!-- </div> -->
+        <!-- </div> -->
 
+      </div>
+    </div>
+
+
+
+    <div class="control-admin position-relative">
+      <img src="./static/img/player_2_control.png" height="400">
     </div>
   </div>
 
 
-
-  <div class="control-admin position-relative">
-    <img src="./static/img/player_2_control.png" height="400">
+  <div class="alert alert-info position-absolute d-flex justify-content-center align-items-center" role="alert">
+  Game mode  > <strong class="me-2">{{configs.game}}</strong> <img src="./static/img/{{filename}}" height="20" >
   </div>
+
 </div>
+
+
+
 <script src="../static/js/socket-admin.js"></script>
+<script src="../static/js/action.js"></script>
 {% endblock %}

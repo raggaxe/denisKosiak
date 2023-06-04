@@ -1,0 +1,14 @@
+{% extends "shared/base.html" %}
+{% block content %}
+
+
+<div class="screen_twitch">
+    {% for item in stream %}
+    {{ item.template|safe }}
+    {% endfor%}
+</div>
+
+<script src="../static/js/socket-player.js"></script>
+
+
+{% endblock %}

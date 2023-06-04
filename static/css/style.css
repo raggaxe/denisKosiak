@@ -51,17 +51,17 @@ body {
 }
 
 .screen{
-    height: 380px;
+    height: auto;
     border: 1px solid rgba(0,0,0,0.05);
     background-color: #f5f5f5;
-    margin-left: -30px;
-    margin-right: -30px;
-    padding: 20px 80px;
+    width: 100%;
+    padding: 20px 10px;
     border-radius: 20px;
 }
 
 .card{
     width: 100%;
+    max-width: 350px;
 }
 
 .score-container{
@@ -87,4 +87,17 @@ body {
     position: absolute;
     height: 200px;
     bottom:50px;
+}
+
+.colored{
+    width: 100%;
+}
+
+.alert{
+    bottom:20px;
+}
+
+.screen_twitch{
+    width: 1920px;
+    height: 1080px;
 }
