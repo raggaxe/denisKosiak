@@ -79,7 +79,9 @@ def stream():
     return render_template('stream/index.html',stream=stream) 
 
 
-
+@mod.route('/denis-stream',methods=['GET','POST'])
+def denis_stream():
+    return render_template('stream/denis-stream.html') 
 
 
 # @mod.route('/setImage', methods=['POST', 'GET'])
