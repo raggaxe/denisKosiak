@@ -1,9 +1,11 @@
 .bd-video-ratios .ratio {
     display: inline-block;
-    width: 460px;
+    width: 600px;
     color: var(--bs-secondary-color);
-    background-color: var(--bs-tertiary-bg);
-    border: var(--bs-border-width) solid var(--bs-border-color);
+    background-color: #000;
+    border: none;
+    border-top-left-radius:15px ;
+    border-top-right-radius:15px ;
 }
 
 :root{
@@ -38,16 +40,19 @@ body {
 }
 .title-control {
     width: 100%;
-    height: 70px;
+    height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #000;
-    border-top-left-radius:32px ;
-    border-top-right-radius:32px ;
+    border-bottom-left-radius:32px ;
+    border-bottom-right-radius:32px ; 
     color: whitesmoke;
-    font-size: 2rem;
-    
+    font-size: 52px;
+    font-family: 'Lexend', sans-serif;
+
+    position: relative;
+    z-index: 999;
 }
 
 .screen{
@@ -84,7 +89,7 @@ body {
    
     width: 550px;
     display: flex;
-    position: absolute;
+    position: relative;
     height: 200px;
     bottom:50px;
 }
@@ -101,3 +106,13 @@ body {
     width: 1920px;
     height: 1080px;
 }
+
+.screen_twitch{
+    background-color:blue;
+    width: 3840px!important;
+    height: 2160px!important;
+    position: relative;
+   z-index: -999999;
+ 
+}
+

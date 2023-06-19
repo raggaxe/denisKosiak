@@ -37,6 +37,24 @@ def placarView():
         if configs['game']== 'FPS':
             filename = 'FPS.png'
 
+    spin_name_1 = repository.find('spin', {'position': '1'})
+    spin_name_2 = repository.find('spin', {'position': '2'})
+    spin_name_3 = repository.find('spin', {'position': '3'})
+    spin_name_4 = repository.find('spin', {'position': '4'})
+    spin_name_5 = repository.find('spin', {'position': '5'})
+    spin_name_6 = repository.find('spin', {'position': '6'})
+    spin_name_7 = repository.find('spin', {'position': '7'})
+    spin_name_8 = repository.find('spin', {'position': '8'})
+
+    # Verifica se os resultados existem e converte-os em listas
+    spin_name_1_list = list(spin_name_1) if spin_name_1 else []
+    spin_name_2_list = list(spin_name_2) if spin_name_2 else []
+    spin_name_3_list = list(spin_name_3) if spin_name_3 else []
+    spin_name_4_list = list(spin_name_4) if spin_name_4 else []
+    spin_name_5_list = list(spin_name_5) if spin_name_5 else []
+    spin_name_6_list = list(spin_name_6) if spin_name_6 else []
+    spin_name_7_list = list(spin_name_7) if spin_name_7 else []
+    spin_name_8_list = list(spin_name_8) if spin_name_8 else []
 
     return render_template('placarView/index.html',
                             configs=configs, 
@@ -45,6 +63,14 @@ def placarView():
                             player2 = repository.find_one('players', {'position':'2'}), 
                             player3 = repository.find_one('players', {'position':'3'}) , 
                             player4 = repository.find_one('players', {'position':'4'}) ,
+                            spin_name_1=spin_name_1_list,
+                            spin_name_2=spin_name_2_list,
+                            spin_name_3=spin_name_3_list,
+                            spin_name_4=spin_name_4_list,
+                            spin_name_5=spin_name_5_list,
+                            spin_name_6=spin_name_6_list,
+                            spin_name_7=spin_name_7_list,
+                            spin_name_8=spin_name_8_list
                               )
 
 
@@ -64,7 +90,7 @@ def configs():
 
 
 
-@mod.route('/stream-denis',methods=['GET','POST'])
+@mod.route('/stream',methods=['GET','POST'])
 def stream():
     configs = repository.find_one('configs', {'creator':'Denis Kosiak'})
     stream = []
@@ -81,8 +107,52 @@ def stream():
 
 @mod.route('/denis-stream',methods=['GET','POST'])
 def denis_stream():
-    return render_template('stream/denis-stream.html') 
 
+    return render_template('stream/denis-stream.html',names_spin=names_spin) 
+
+
+@mod.route('/header',methods=['GET','POST'])
+def header():
+    return render_template('stream/header.html') 
+
+@mod.route('/frame',methods=['GET','POST'])
+def frame():
+    return render_template('stream/frame.html') 
+
+@mod.route('/counter',methods=['GET','POST'])
+def counter():
+    return render_template('stream/counter.html') 
+
+@mod.route('/spinning',methods=['GET','POST'])
+def spinning():
+    spin_name_1 = repository.find('spin', {'position': '1'})
+    spin_name_2 = repository.find('spin', {'position': '2'})
+    spin_name_3 = repository.find('spin', {'position': '3'})
+    spin_name_4 = repository.find('spin', {'position': '4'})
+    spin_name_5 = repository.find('spin', {'position': '5'})
+    spin_name_6 = repository.find('spin', {'position': '6'})
+    spin_name_7 = repository.find('spin', {'position': '7'})
+    spin_name_8 = repository.find('spin', {'position': '8'})
+
+    # Verifica se os resultados existem e converte-os em listas
+    spin_name_1_list = list(spin_name_1) if spin_name_1 else []
+    spin_name_2_list = list(spin_name_2) if spin_name_2 else []
+    spin_name_3_list = list(spin_name_3) if spin_name_3 else []
+    spin_name_4_list = list(spin_name_4) if spin_name_4 else []
+    spin_name_5_list = list(spin_name_5) if spin_name_5 else []
+    spin_name_6_list = list(spin_name_6) if spin_name_6 else []
+    spin_name_7_list = list(spin_name_7) if spin_name_7 else []
+    spin_name_8_list = list(spin_name_8) if spin_name_8 else []
+    return render_template('stream/spinning.html',
+                            spin_name_1=spin_name_1_list,
+                            spin_name_2=spin_name_2_list,
+                            spin_name_3=spin_name_3_list,
+                            spin_name_4=spin_name_4_list,
+                            spin_name_5=spin_name_5_list,
+                            spin_name_6=spin_name_6_list,
+                            spin_name_7=spin_name_7_list,
+                            spin_name_8=spin_name_8_list
+                            ) 
 
 # @mod.route('/setImage', methods=['POST', 'GET'])
 # def setImage():

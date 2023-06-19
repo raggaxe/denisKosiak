@@ -2,6 +2,7 @@ from flask import Flask, render_template,request,send_from_directory, current_ap
 from flask_socketio import *
 from dotenv import load_dotenv
 import os
+from model.Spin import Spin
 from model.Player import Player
 from Configs.MongoConfig import MongoConfig
 from repository.BaseRepository import BaseRepository
@@ -191,6 +192,33 @@ def set_score4(data):
         new_player = Player(form)
         repository.create(new_player)
     emit('score4',{'score':0},broadcast=True)
+
+
+
+@socketio.on('spinName')
+def spinName(data):
+    print(data)
+    name_found = repository.find_one('spin', {'position':data['position']})
+    
+    if name_found is not None:
+        repository.update_one('spin', {'_id': ObjectId(name_found['_id'] ) }, {'name':data['name'] })
+        print('updated name')
+    else:
+        form = {
+            'name':data['name'],
+            'position':data['position'],
+        }
+        new_spin_name= Spin(form)
+        repository.create(new_spin_name)
+
+    emit('set-spinName',{'name':data['name'],'position':data['position']},broadcast=True)
+
+
+@socketio.on('spinNow')
+def spinName():
+    print('spinNow')
+    emit('spin',broadcast=True)
+
 
 
 @app.route('/')

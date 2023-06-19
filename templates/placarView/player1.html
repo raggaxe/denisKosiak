@@ -1,4 +1,12 @@
-<div class="d-flex flex-column justify-content-center align-items-center vh-100">
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <div class="score d-flex flex-wrap justify-content-center align-items-end" id="player1_score">
+
+        {% if player %}
+        <input type="hidden" id="input_score1" value="{{player.score}}" name="score">
+        {%else%}
+        <input type="hidden" id="input_score1" value="0" name="score">
+        {% endif %}
+    </div>
     <div class="bd-video-ratios">
 
         <div class="d-flex justify-content-start align-items-start v-100 position-relative">
@@ -10,6 +18,10 @@
 
 
             <div class="d-flex  justify-content-center align-items-center flex-column">
+
+                <div class="ratio ratio-16x9">
+                    <!-- <div>4x3</div> -->
+                </div>
                 <div class="title-control" id="player1_name">
                     {% if player %}
                     {{player.name}}
@@ -17,9 +29,6 @@
                     player1
                     {% endif %}
 
-                </div>
-                <div class="ratio ratio-4x3">
-                    <!-- <div>4x3</div> -->
                 </div>
 
 
@@ -33,12 +42,9 @@
         </div>
 
     </div>
-    <div class="score d-flex flex-wrap justify-content-center align-items-center" id="player1_score">
-
-        {% if player %}
-        <input type="hidden" id="input_score1" value="{{player.score}}" name="score">
-        {%else%}
-        <input type="hidden" id="input_score1" value="0" name="score">
-        {% endif %}
+    <div class="caixa">
+        <div style="display:none" class="ads" id="adContainer">
+            <h1 class="text-white">Propaganda</h1>
+        </div>
     </div>
 </div>

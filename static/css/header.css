@@ -1,0 +1,33 @@
+.topbanner {
+    background: #000;
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+
+  }
+  .img_invert {
+    filter: invert(1);
+    z-index: 2;
+    mix-blend-mode: screen;
+  }
+  .link .Twitch{
+    margin-top:20px;
+    font-size:5rem;
+    color:#fff;
+    font-family: 'Lexend', sans-serif;
+    z-index: 2;
+  }
+
+  .link  .Twitch-link{
+    font-size:7rem;
+    color:#ffc914;
+    font-family: 'Lexend', sans-serif;
+    z-index: 2;
+  }
+
+  .giphy-embed{
+    position:absolute;
+    z-index: 0;
+    mix-blend-mode: screen;
+    opacity: .55;
+  }

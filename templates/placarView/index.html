@@ -17,52 +17,112 @@
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Main Settings</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-      <form action="/configs" method="POST" class="offcanvas-body">
+      <div class="offcanvas-body">
+        <form action="/configs" method="POST">
 
-        <div class="mt-4">
-          <input type="hidden" id="input_player" value="{% if configs.players %}{{configs.players}}{%else%}{%endif%}">
-          <h6><i class="bi bi-joystick me-2"></i> Select number players:</h6>
-          <div class="form-floating">
-            <select class="form-select" id="select_player" name="players" aria-label="Select number players">
-       
-              <option selected disabled>Select players</option>
-              <option value="1" >One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-              <option value="4">Four</option>
-              
-            </select>
-            <label for="floatingSelect">Players</label>
-          </div>
-        </div>
+          <div class="mt-4">
+            <input type="hidden" id="input_player" value="{% if configs.players %}{{configs.players}}{%else%}{%endif%}">
+            <h6><i class="bi bi-joystick me-2"></i> Select number players:</h6>
+            <div class="form-floating">
+              <select class="form-select" id="select_player" name="players" aria-label="Select number players">
 
-        <div class="mt-4">
+                <option selected disabled>Select players</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <!-- <option value="3">Three</option>
+                <option value="4">Four</option> -->
 
-          <h6><i class="bi bi-controller me-2"></i>Select game mode:</h6>
-          <input type="hidden" id="input_game" value="{% if configs.game %}{{configs.game}}{%else%}{%endif%}">
-        
-          <div class="form-floating">
-            <select class="form-select" id="select_game" name="game" aria-label="Select game mode">
-              <option selected disabled>Open this select menu</option>
-              <option value="Sport">Sport</option>
-              <option value="Race">Race</option>
-              <option value="FPS">FPS</option>
-
-            </select>
-            <label for="floatingSelect">Players</label>
+              </select>
+              <label for="floatingSelect">Players</label>
+            </div>
           </div>
 
-        </div>
+          <div class="mt-4">
 
-        <div class="d-grid gap-2 mt-4">
-          <button class="btn btn-primary" type="submit">Start Game</button>
-      
-        </div>
+            <h6><i class="bi bi-controller me-2"></i>Select game mode:</h6>
+            <input type="hidden" id="input_game" value="{% if configs.game %}{{configs.game}}{%else%}{%endif%}">
+
+            <div class="form-floating">
+              <select class="form-select" id="select_game" name="game" aria-label="Select game mode">
+                <option selected disabled>Open this select menu</option>
+                <option value="Sport">Sport</option>
+                <option value="Race">Race</option>
+                <option value="FPS">FPS</option>
+
+              </select>
+              <label for="floatingSelect">Players</label>
+            </div>
+
+          </div>
+
+          <div class="d-grid gap-2 mt-4">
+            <button class="btn btn-primary" type="submit">Start Game</button>
+
+          </div>
 
 
 
-       
-      </form>
+
+        </form>
+        <hr>
+        <form>
+          <h5 class="offcanvas-title">Spinning wheel settings</h5>
+
+          <div class="mt-4">
+            <div class="form-floating">
+              <input class="form-control spin-name" id="sorted_1"  data-position="1" placeholder="name 1" onkeyup="setSpinName(this)" value="{% if spin_name_1 %}{{spin_name_1[0]['name']}}{% endif %}">
+              <label for="sorted_1">Name 1</label>
+            </div>
+          </div>
+          <div class="mt-1">
+            <div class="form-floating">
+              <input class="form-control spin-name" id="sorted_2" data-position="2" placeholder="name 2" onkeyup="setSpinName(this)" value="{% if spin_name_2 %}{{spin_name_2[0]['name']}}{% endif %}">
+              <label for="sorted_2">Name 2</label>
+            </div>
+          </div>
+          <div class="mt-1">
+            <div class="form-floating">
+              <input class="form-control spin-name" id="sorted_3" data-position="3" placeholder="name 3" onkeyup="setSpinName(this)" value="{% if spin_name_3 %}{{spin_name_3[0]['name']}}{% endif %}">
+              <label for="sorted_3">Name 3</label>
+            </div>
+          </div>
+          <div class="mt-1">
+            <div class="form-floating">
+              <input class="form-control spin-name" id="sorted_4" data-position="4" placeholder="name 4" onkeyup="setSpinName(this)" value="{% if spin_name_4 %}{{spin_name_4[0]['name']}}{% endif %}">
+              <label for="sorted_4">Name 4</label>
+            </div>
+          </div>
+          <div class="mt-1">
+            <div class="form-floating">
+              <input class="form-control spin-name" id="sorted_5" data-position="5" placeholder="name 5" onkeyup="setSpinName(this)" value="{% if spin_name_5 %}{{spin_name_5[0]['name']}}{% endif %}">
+              <label for="sorted_5">Name 5</label>
+            </div>
+          </div>
+          <div class="mt-1">
+            <div class="form-floating">
+              <input class="form-control spin-name" id="sorted_6" data-position="6" placeholder="name 6" onkeyup="setSpinName(this)" value="{% if spin_name_6 %}{{spin_name_6[0]['name']}}{% endif %}">
+              <label for="sorted_6">Name 6</label>
+            </div>
+          </div>
+          <div class="mt-1">
+            <div class="form-floating">
+              <input class="form-control spin-name" id="sorted_7" data-position="7" placeholder="name 7" onkeyup="setSpinName(this)" value="{% if spin_name_7 %}{{spin_name_7[0]['name']}}{% endif %}">
+              <label for="sorted_7">Name 7</label>
+            </div>
+          </div>
+          <div class="mt-1">
+            <div class="form-floating">
+              <input class="form-control spin-name" id="sorted_8" data-position="8" placeholder="name 8" onkeyup="setSpinName(this)" value="{% if spin_name_8 %}{{spin_name_8[0]['name']}}{% endif %}">
+              <label for="sorted_8">Name 8</label>
+            </div>
+          </div>
+          <div class="d-grid gap-2 mt-4">
+            <button class="btn btn-danger spin-now" type="button" >SPIN NOW !!! </button>
+
+          </div>
+        </form>
+      </div>
+
     </div>
   </div>
 </nav>
@@ -146,7 +206,7 @@
       </div>
       <div class=" justify-content-center align-items-center w-100 mt-2">
 
-       
+
         <!-- <div class="w-50"> -->
 
         <!-- <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
@@ -258,7 +318,7 @@
 
 
   <div class="alert alert-info position-absolute d-flex justify-content-center align-items-center" role="alert">
-  Game mode  > <strong class="me-2">{{configs.game}}</strong> <img src="./static/img/{{filename}}" height="20" >
+    Game mode > <strong class="me-2">{{configs.game}}</strong> <img src="./static/img/{{filename}}" height="20">
   </div>
 
 </div>

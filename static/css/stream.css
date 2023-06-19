@@ -1,0 +1,45 @@
+
+.screenBox{
+     width: 100%; 
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    padding: 130px;
+}
+
+
+
+.bd-video-ratios .ratio {
+    display: inline-block;
+    width: 460px;
+    color: var(--bs-secondary-color);
+    background-color: var(--bs-tertiary-bg);
+    border: var(--bs-border-width) solid var(--bs-border-color);
+}
+.ads {
+    position: relative;
+    display: none;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+@keyframes slideDown {
+    0% {
+        transform: translateY(0%);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}

@@ -1,0 +1,186 @@
+:root{
+    --height: 610px !important;
+}
+.wheel-container {
+    position: relative;
+    width: 741px;
+    height: 1363px;
+    margin: 0 auto;
+    text-align: center;
+
+  }
+  
+  .wheel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-origin: center center;
+    animation: spin 4s linear infinite;
+    border-radius: 50%;
+  }
+  
+  .slice {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+   
+    transform-origin: center center;
+    border-radius: 50%;
+    color: black;
+  }
+
+  .result{
+    margin-top: 100px;
+    font-size: 180px;
+    color:#fff;
+    font-family: 'Bebas Neue', sans-serif;
+    padding:0px;
+    position: absolute;
+    width: 1600px;
+    height: 1600px;
+    
+  }
+  .bg-won{
+    z-index: 0;
+    mix-blend-mode: lighten;
+  }
+.seta{
+    transform: rotate(270deg);
+    font-size: 99px;
+    background-color:#fff;
+    height: 75px;
+    width:75px;
+    margin-bottom: 90px;
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+  }
+
+  .slice:nth-child(1) { 
+    transform: rotate(0deg);
+  
+}
+.slice:nth-child(1) .name{ 
+    transform: rotate(270deg);
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+    background-color: red;
+    text-align: right;
+    height:var(--height);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+  .slice:nth-child(2) { transform: rotate(45deg); }
+
+  .slice:nth-child(2) .name{ 
+    transform: rotate(270deg);
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+    background-color: green;
+    text-align: right;
+    height:var(--height);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+  .slice:nth-child(3) { transform: rotate(90deg); }
+  .slice:nth-child(3) .name{ 
+    transform: rotate(270deg);
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+    background-color: yellow;
+    text-align: right;
+    height:var(--height);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+  .slice:nth-child(4) { transform: rotate(135deg); }
+  .slice:nth-child(4) .name{ 
+    transform: rotate(270deg);
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+    background-color: pink;
+    text-align: right;
+    height:var(--height);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+  .slice:nth-child(5) { transform: rotate(180deg); }
+  .slice:nth-child(5) .name{ 
+    transform: rotate(270deg);
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+    background-color: cyan;
+    text-align: right;
+    height:var(--height);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+
+  .slice:nth-child(6) { transform: rotate(225deg); }
+  .slice:nth-child(6) .name{ 
+    transform: rotate(270deg);
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+    background-color: purple;
+    text-align: right;
+    height:var(--height);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+
+  .slice:nth-child(7) { transform: rotate(270deg); }
+  .slice:nth-child(7) .name{ 
+    transform: rotate(270deg);
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+    background-color: orange;
+    text-align: right;
+    height:var(--height);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+  .slice:nth-child(8) { transform: rotate(315deg); }
+  .slice:nth-child(8) .name{ 
+    transform: rotate(270deg);
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+    background-color: cyan;
+    text-align: right;
+    height:var(--height);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+
+  
+  .spin-result {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  
+  #spin-button {
+    margin-top: 250px;
+    position:absolute;
+    z-index: 9999;
+  }
+  
+.name{
+    font-size: 99px;
+    padding-right: 50px;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+  
+  .wheel.stopped {
+    animation: none;
+  }
+
+  .opacity-x{
+    opacity: .2;
+  }
+  

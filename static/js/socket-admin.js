@@ -47,3 +47,16 @@ player4_score.on('input', function() {
 //   socket.on('player2_name_resp', function() {
 //     console.log('player2_name_resp')
 //   });
+
+
+
+
+const spinName = $('.spin-name');
+const spinNow = $('.spin-now');
+spinName.on('input', function() {
+  socket.emit('spinName', { name: $(this).val(), position: $(this).attr('data-position') });
+});
+
+spinNow.on('click', function() {
+  socket.emit('spinNow');
+});

@@ -1,0 +1,152 @@
+{% extends "shared/base_stream.html" %}
+{% block content %}
+
+
+<link href="../static/css/spinning.css" rel="stylesheet">
+
+
+
+<div class="d-flex flex-column justify-content-center align-items-center h-100">
+    <div class="seta"></div>
+    <div class="wheel-container">
+        <div class="wheel stopped">
+            <div class="slice" id="1" data-result="{% if spin_name_1 %}{{spin_name_1[0]['name']}}{%else%}Name 1{% endif %}">
+                <div class="name" id="name_1">{% if spin_name_1 %}{{spin_name_1[0]['name']}}{%else%}Insert Name{% endif %}</div>
+            </div>
+            <div class="slice" id="2" data-result="{% if spin_name_2 %}{{spin_name_2[0]['name']}}{%else%}Name 2{% endif %}">
+                <div class="name" id="name_2">{% if spin_name_2 %}{{spin_name_2[0]['name']}}{%else%}Insert Name{% endif %}</div>
+            </div>
+            <div class="slice" id="3" data-result="{% if spin_name_3 %}{{spin_name_3[0]['name']}}{%else%}Name 3{% endif %}">
+                <div class="name" id="name_3">{% if spin_name_3 %}{{spin_name_3[0]['name']}}{%else%}Insert Name{% endif %}</div>
+            </div>
+            <div class="slice" id="4" data-result="{% if spin_name_4 %}{{spin_name_4[0]['name']}}{%else%}Name 4{% endif %}">
+                <div class="name" id="name_4">{% if spin_name_4 %}{{spin_name_4[0]['name']}}{%else%}Insert Name{% endif %}</div>
+            </div>
+            <div class="slice" id="5" data-result="{% if spin_name_5 %}{{spin_name_5[0]['name']}}{%else%}Name 5{% endif %}">
+                <div class="name" id="name_5">{% if spin_name_5 %}{{spin_name_5[0]['name']}}{%else%}Insert Name{% endif %}</div>
+            </div>
+            <div class="slice" id="6" data-result="{% if spin_name_6 %}{{spin_name_6[0]['name']}}{%else%}Name 6{% endif %}">
+                <div class="name" id="name_6">{% if spin_name_6 %}{{spin_name_6[0]['name']}}{%else%}Insert Name{% endif %}</div>
+            </div>
+            <div class="slice" id="7" data-result="{% if spin_name_7 %}{{spin_name_7[0]['name']}}{%else%}Name 7{% endif %}">
+                <div class="name" id="name_7" >{% if spin_name_7 %}{{spin_name_7[0]['name']}}{%else%}Insert Name{% endif %}</div>
+            </div>
+            <div class="slice" id="8" data-result="{% if spin_name_8 %}{{spin_name_8[0]['name']}}{%else%}Name 8{% endif %}">
+                <div class="name" id="name_8">{% if spin_name_8 %}{{spin_name_8[0]['name']}}{%else%}Insert Name{% endif %}</div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="result" style="display: none;">
+        <iframe src="https://giphy.com/embed/XynSWKO5chZHuBhfsQ" width="1600" height="1600" frameBorder="0"
+            class="position-absolute bg-won" allowFullScreen></iframe>
+        <div class="d-flex flex-column justify-content-center align-items-center position-relative h-100">
+            <iframe src="https://giphy.com/embed/l0HlSDiA6WUytl9oA" width="550" height="550" frameBorder="0"
+                class="giphy-embed" allowFullScreen></iframe>
+            <div id="spin-result" class="mx-5"></div>
+        </div>
+    </div>
+
+
+
+</div>
+<div class="position-relative">
+    <button id="spin-button" class="btn btn-primary" onclick="spinWheel()">Spin</button>
+</div>
+
+
+
+
+
+<script>
+    let spinning = false;
+    let result = '';
+    let targetRotation = 0;
+    let currentRotation = 0;
+    const divResult = $(".result");
+    const divWheel = $(".wheel-container");
+    const seta = $(".seta");
+
+    function spinWheel() {
+        const wheel = document.querySelector('.wheel');
+        const slices = document.querySelectorAll('.slice');
+        const spinButton = document.getElementById('spin-button');
+        const spinResult = document.getElementById('spin-result');
+
+        if (!spinning) {
+            result = '';
+            wheel.classList.remove('stopped');
+            wheel.style.animation = 'none';
+            currentRotation %= 360; // Limita a rotação atual entre 0 e 359
+            wheel.style.transform = `rotate(${currentRotation}deg)`;
+            spinning = true;
+            spinButton.textContent = 'Stop';
+            spinResult.textContent = '';
+
+            const angles = [0, 45, 90, 135, 180, 225, 270, 315];
+            const randomAngleIndex = Math.floor(Math.random() * angles.length);
+            const randomAngle = angles[randomAngleIndex];
+            targetRotation = currentRotation + randomAngle + 720; // Define uma rotação alvo aleatória dentro dos ângulos desejados
+
+            rotateWheel();
+        } else {
+            stopWheel();
+        }
+    }
+
+
+    function rotateWheel() {
+        divResult.hide()
+        divWheel.removeClass('opacity-x');
+        seta.removeClass('opacity-x')
+        const wheel = document.querySelector('.wheel');
+        const rotationIncrement = 5; // Incremento de rotação a cada frame
+        currentRotation += rotationIncrement;
+        wheel.style.transform = `rotate(${currentRotation}deg)`;
+
+        if (currentRotation < targetRotation) {
+            requestAnimationFrame(rotateWheel);
+        } else {
+            stopWheel();
+        }
+    }
+
+    function stopWheel() {
+        const wheel = document.querySelector('.wheel');
+        wheel.style.animation = 'none';
+        spinning = false;
+
+        const slices = document.querySelectorAll('.slice');
+
+        const degreesPerSlice = 360 / slices.length; // Graus por fatia, calculado dividindo 360 pelo número de fatias
+
+        const rotationOffset = degreesPerSlice / 2; // Deslocamento de rotação, metade dos graus por fatia
+
+        const normalizedRotation = (currentRotation) % 360; // Rotação normalizada, adiciona o deslocamento e faz a rotação atual modular 360
+        const selectedSliceIndex = Math.floor(normalizedRotation / degreesPerSlice); // Índice da fatia selecionada com base na rotação normalizada
+        result = slices[8 - selectedSliceIndex].getAttribute('data-result'); // Resultado obtido a partir do atributo 'data-result' da fatia selecionada
+
+        setTimeout(() => {
+            document.getElementById('spin-button').textContent = 'Spin';
+            wheel.classList.add('stopped');
+            divWheel.addClass('opacity-x');
+            seta.addClass('opacity-x')
+            document.getElementById('spin-result').textContent = `${result}`;
+            divResult.show()
+            setTimeout(() => {
+                divWheel.removeClass('opacity-x');
+                seta.removeClass('opacity-x')
+                divResult.hide()
+            }, 10000);
+
+        }, 1000);
+
+
+
+    }
+
+
+</script>
+
+{% endblock %}

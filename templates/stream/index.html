@@ -1,14 +1,10 @@
-{% extends "shared/base.html" %}
+{% extends "shared/base_stream.html" %}
 {% block content %}
-
-
-<div class="screen_twitch">
+<link href="../static/css/stream.css" rel="stylesheet">  
+<div class="screenBox">
     {% for item in stream %}
     {{ item.template|safe }}
     {% endfor%}
 </div>
-
-<script src="../static/js/socket-player.js"></script>
-
 
 {% endblock %}
