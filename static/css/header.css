@@ -75,7 +75,7 @@
   }
 .subscribe{
   z-index:999;
-  bottom:-250px;
+  bottom:-200px;
  
   display: flex;
   justify-content: start;
