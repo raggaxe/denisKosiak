@@ -1,8 +1,6 @@
 var socket = io.connect('http:' + '//' + document.domain + ':' + location.port);
 
-socket.on('connect', function() {
-    socket.emit('connected', { message: 'User connected' });
-  });
+
 
 
   const player1_name = $('#player1_name');
@@ -60,3 +58,17 @@ spinName.on('input', function() {
 spinNow.on('click', function() {
   socket.emit('spinNow');
 });
+
+
+$(document).ready(function() {
+  socket.emit('refresh');
+});
+
+
+
+
+socket.on('connect', function() {
+  socket.emit('connected', { message: 'User connected' });
+});
+
+

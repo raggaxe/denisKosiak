@@ -1,13 +1,13 @@
 .countdown{
-    color:#fff;
+    color:#000;
     font-size: 12rem;
     font-family: 'Josefin Sans', sans-serif;
-    border:1.6rem solid #fff;
+    border:1.6rem solid #000;
     padding: 1.2rem 8rem .1rem 8rem;
-    border-radius: 25rem;
-    background-color: rgba(61, 51, 78,.75);
+     background: rgb(255,201,20,.95);
+     font-family: 'Press Start 2P', cursive;
     box-shadow: 10px 30px 50px rgba(0, 0, 0, 0.5); /* Adicione essa linha */
-    width:33%;
+    width:auto;
 }
 
 .bg-game{
@@ -21,3 +21,4 @@
     mix-blend-mode: revert;
     position:absolute;
 }
+

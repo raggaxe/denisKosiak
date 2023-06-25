@@ -12,7 +12,7 @@
 
 .bd-video-ratios .ratio {
     display: inline-block;
-    width: 460px;
+    width: 565px;
     color: var(--bs-secondary-color);
     background-color: var(--bs-tertiary-bg);
     border: var(--bs-border-width) solid var(--bs-border-color);

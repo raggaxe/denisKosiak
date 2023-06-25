@@ -1,7 +1,17 @@
 
 <div class="score-container">
     {% if filename %}
-    <img  src="./static/img/{{filename}}" class="position-relative" height="100">
+
+        {% if filename == 'FlagLogo.png'%}
+        <img src="./static/img/{{filename}}" height="155">
+        
+        {% else %}
+        <img  src="./static/img/{{filename}}" class="position-relative" height="85">
+
+        {% endif %}
+
+
+    
     {% else %}
    <div class="default-score">
 

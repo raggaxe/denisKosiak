@@ -22,6 +22,10 @@ def getFilename():
 
         if configs['game'] == 'FPS':
             filename = 'FPS.png'
+            
+        if configs['game']== 'Logo':
+            filename = 'FlagLogo.png'
+
         return filename
 
 @mod.route('/player1')

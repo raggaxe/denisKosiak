@@ -1,10 +1,26 @@
 {% extends "shared/base_stream.html" %}
 {% block content %}
 <link href="../static/css/header.css" rel="stylesheet">
+
+
 <div class="screenBox">
     <div class="topbanner d-flex justify-content-center align-items-center">
+        <!-- Event follow -->
+        <div class="position-absolute follow">
+            <img class="" src="./static/img/Flag.gif" height="230px">
+            <div class="d-flex flex-column justify-content-start align-items-start text-left ms-4">
+                <div class="follow-text follower">
+                    @Arcade_Arena
+                </div>
+                <div class="text-sub">
+                    IS FOLLOWING
+                </div>
+            </div>
+
+        </div>
         <div class="d-flex flex-column justify-content-center align-items-center topbanner w-100">
-            <iframe src="https://giphy.com/embed/OK5LK5zLFfdm" width="3840" height="3840" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+            <iframe src="https://giphy.com/embed/OK5LK5zLFfdm" width="3840" height="3840" frameBorder="0"
+                class="giphy-embed" allowFullScreen></iframe>
             <div class="animated-div" id="link">
                 <div class="d-flex justify-content-center align-items-center link">
                     <div class="Twitch">Twitch.tv</div>
@@ -15,8 +31,47 @@
                 <img class="img_invert" src="./static/img/HHwordmark.png" width="800">
             </div>
         </div>
-       
     </div>
+
+
+    <!-- Event subscribe -->
+    <div class="position-absolute subscribe">
+        <div class="d-flex justify-content-center align-items-center colored">
+
+            <div class="control-admin position-relative">
+                <img src="./static/img/player_1_control.png" height="400">
+            </div>
+            <div class="sub-screen flex-column d-flex justify-content-center align-items-center">
+
+                <div class="inner text-center">
+                   <div class="batery">
+                    <i class='bx bxs-battery-low'></i>
+                   </div>
+                    <img class="img_invert" src="./static/img/FullLogo.png" width="120">
+                    <div class="sub mt-3">@Arcade_arena</div>
+                    <div class="text-sub-hero mt-3">
+                        BECAME A HERO <span class="dots">...</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="control-admin position-relative">
+                <img src="./static/img/player_2_control.png" height="400">
+            </div>
+        </div>
+
+    </div>
+   
+
+
+
+
 </div>
-<script src="../static/js/header.js"></script>  
+
+
+
+<script src="../static/js/header.js"></script>
 {% endblock %}

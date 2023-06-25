@@ -29,5 +29,127 @@
     position:absolute;
     z-index: 0;
     mix-blend-mode: screen;
-    opacity: .55;
+    opacity: .35;
+    filter:hue-rotate(305deg);
   }
+  .follow{
+    z-index:999;
+    top: 0px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items:  center;
+    background: rgb(255,201,20);
+    background: linear-gradient(90deg, rgba(255,201,20,.97) 0%, rgba(255,201,20,.95) 20%, rgba(0,0,0,0) 100%);
+    flex-direction: row;
+    padding: 0 750px 0 75px;
+   height: auto;
+   overflow: hidden;
+ 
+  
+  }
+.logo{
+  margin-top: 50px;
+}
+  .follow-text{
+    position: relative;
+    font-size: 55px;
+   
+    font-family: 'bebas', sans-serif;
+    font-weight: 600;
+    color:#000;
+   letter-spacing: .2rem;letter-spacing: 0.05rem;
+    text-shadow: 1px 1px 2px black;
+  }
+
+
+
+  .text-sub{
+    position: relative;
+    font-size: 35px;
+    font-family: 'bebas', sans-serif;
+    font-weight: 500;
+    color:#000;
+    margin-left:15px;
+    text-shadow: 1px 1px 2px black;
+  }
+.subscribe{
+  z-index:999;
+  bottom:-250px;
+ 
+  display: flex;
+  justify-content: start;
+  align-items:  center;
+  flex-direction: column;
+
+
+  height: 500px;
+
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.follow-img{
+  position: absolute;
+  width: 100%;
+}
+
+.text-sub-hero{
+  color:#ffc914;
+  font-size: 25px;
+  font-weight: 500;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+}
+.sub-screen{
+  width: 0;
+  overflow: hidden;
+  transition: width 0.5s ease;
+  height: 400px;
+  position: relative;
+  background-color: rgba(0,0,0,.90);
+}
+.sub-screen.expand {
+  width: 100%;
+}
+
+.inner{
+padding: 0px 80px;
+}
+.sub{
+  position: relative;
+  font-size: 32px;
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 500;
+  color:#fff;
+  margin-left:15px;
+  text-shadow: 1px 1px 2px black;
+}
+
+.batery{
+  position:absolute;
+  top:20px;
+  right:20px;
+  animation: blink 1s infinite;
+}
+
+.batery i{
+  color:#fff;
+  font-size: 3rem;
+  opacity: .5;
+}
+
+.dots{
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

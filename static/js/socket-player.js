@@ -105,8 +105,6 @@ function scoreMenos(_score, insertDiv) {
   // Remove a última div adicionada
   const scoreDivs = $(insertDiv + ' .score-container');
 
-
-  console.log($('.score-container'))
   if (scoreDivs.length > parseInt(_score)) {
 
     $(scoreDivs[scoreDivs.length - 1]).remove();
@@ -150,6 +148,27 @@ socket.on('set-spinName', function (data) {
  $('#name_'+data.position).html(data.name);
 })
 
+
+
 socket.on('spin', function () {
   spinWheel();
+});
+
+
+socket.on('refresh stream', function () {
+  location.reload();
+});
+
+socket.on('countDown', function (data) {
+  console.log(data)
+  $('#timeInput').val(data['currentTime'])
+  $("#countdown").html(data['currentTime']);
+
+  if (!data['isPaused']){
+    startCountdown()
+  }
+  else{
+    pauseCountdown()
+  }
+  
 });

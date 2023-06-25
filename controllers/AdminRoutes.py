@@ -36,6 +36,9 @@ def placarView():
 
         if configs['game']== 'FPS':
             filename = 'FPS.png'
+        
+        if configs['game']== 'Logo':
+            filename = 'FlagLogo.png'
 
     spin_name_1 = repository.find('spin', {'position': '1'})
     spin_name_2 = repository.find('spin', {'position': '2'})

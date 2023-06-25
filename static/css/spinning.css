@@ -1,5 +1,7 @@
 :root{
     --height: 610px !important;
+    --color1:#000;
+    --color2:#ffc914;
 }
 .wheel-container {
     position: relative;
@@ -7,8 +9,23 @@
     height: 1363px;
     margin: 0 auto;
     text-align: center;
-
+    
   }
+
+  .wheel-container::after {
+    content: "";
+    position: absolute;
+    width: 1550px;
+    height: 1550px;
+    border-radius: 50%;
+    margin: 0 auto;
+    text-align: center;
+    top: -84px;
+    left: -409px;
+    background-color: black;
+    z-index: -12;
+    box-shadow: 0px 0px 55px 12px var(--color2);
+}
   
   .wheel {
     position: relative;
@@ -17,19 +34,67 @@
     transform-origin: center center;
     animation: spin 4s linear infinite;
     border-radius: 50%;
+   
   }
-  
+
+  .wheel::after{
+    content: "SPIN IT";
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    background: #000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 99px;
+    color:var(--color2);
+    animation: shadow-animation 1s infinite alternate, font-size-animation 1s infinite alternate;
+   
+  }
+  @keyframes shadow-animation {
+    0% {
+      box-shadow: 0px 0px 5px 5px var(--color1);
+    }
+    50% {
+      box-shadow: 0px 0px 55px 12px var(--color2);
+    }
+
+    100% {
+      box-shadow: 0px 0px 5px 5px var(--color1);
+    }
+  }
+
+
+  @keyframes font-size-animation {
+    0% {
+      font-size: 99px;
+    }
+    50% {
+      font-size: 120px;
+    }
+    100% {
+      font-size: 99px;
+    }
+  }
+
+
   .slice {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-   
-    transform-origin: center center;
-    border-radius: 50%;
-    color: black;
+    border-radius: 30%;
+    overflow: hidden;
   }
+
+
+
 
   .result{
     margin-top: 100px;
@@ -49,11 +114,12 @@
 .seta{
     transform: rotate(270deg);
     font-size: 99px;
-    background-color:#fff;
-    height: 75px;
-    width:75px;
-    margin-bottom: 90px;
+    background-color:var(--color2);
+    height: 125px;
+    width:125px;
+    margin-bottom: 50px;
     clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+    box-shadow: 0px 0px 55px 12px var(--color1);
   }
 
   .slice:nth-child(1) { 
@@ -63,31 +129,36 @@
 .slice:nth-child(1) .name{ 
     transform: rotate(270deg);
     clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
-    background-color: red;
+    background-color: var(--color2);
     text-align: right;
     height:var(--height);
     display: flex;
     justify-content: end;
     align-items: center;
+    
 }
+
+
+
 
   .slice:nth-child(2) { transform: rotate(45deg); }
 
   .slice:nth-child(2) .name{ 
     transform: rotate(270deg);
     clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
-    background-color: green;
+    background-color: var(--color1);
     text-align: right;
     height:var(--height);
     display: flex;
     justify-content: end;
     align-items: center;
+    color:var(--color2)
 }
   .slice:nth-child(3) { transform: rotate(90deg); }
   .slice:nth-child(3) .name{ 
     transform: rotate(270deg);
     clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
-    background-color: yellow;
+    background-color: var(--color2);
     text-align: right;
     height:var(--height);
     display: flex;
@@ -98,19 +169,20 @@
   .slice:nth-child(4) .name{ 
     transform: rotate(270deg);
     clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
-    background-color: pink;
+    background-color: var(--color1);
     text-align: right;
     height:var(--height);
     display: flex;
     justify-content: end;
     align-items: center;
+    color:var(--color2)
 }
 
   .slice:nth-child(5) { transform: rotate(180deg); }
   .slice:nth-child(5) .name{ 
     transform: rotate(270deg);
     clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
-    background-color: cyan;
+    background-color: var(--color2);
     text-align: right;
     height:var(--height);
     display: flex;
@@ -123,12 +195,13 @@
   .slice:nth-child(6) .name{ 
     transform: rotate(270deg);
     clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
-    background-color: purple;
+    background-color: var(--color1);
     text-align: right;
     height:var(--height);
     display: flex;
     justify-content: end;
     align-items: center;
+    color:var(--color2)
 }
 
 
@@ -136,7 +209,7 @@
   .slice:nth-child(7) .name{ 
     transform: rotate(270deg);
     clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
-    background-color: orange;
+    background-color: var(--color2);
     text-align: right;
     height:var(--height);
     display: flex;
@@ -148,12 +221,13 @@
   .slice:nth-child(8) .name{ 
     transform: rotate(270deg);
     clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
-    background-color: cyan;
+    background-color: var(--color1);
     text-align: right;
     height:var(--height);
     display: flex;
     justify-content: end;
     align-items: center;
+    color:var(--color2)
 }
 
 
@@ -170,9 +244,10 @@
   }
   
 .name{
-    font-size: 99px;
-    padding-right: 50px;
+    font-size: 75px;
+    padding-right: 120px;
     font-family: 'Bebas Neue', sans-serif;
+    
 }
 
   

@@ -1,17 +1,30 @@
 {% extends "shared/base.html" %}
 {% block content %}
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+<link rel="stylesheet" href="https://cdn.korzh.com/metroui/v4/css/metro.min.css">
 <nav class="navbar fixed-top bg-white fixed-top">
-  <div class="container">
+  <div class="w-100 d-flex justify-content-around align-items-center">
     <a class="navbar-brand" href="#">
 
       <img src="./static/img/HHwordmark.png" alt="" height="50">
+
     </a>
-    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-      aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <img src="./static/img/FullLogo.png" alt="" height="50">
-    </button>
+    <div class="d-flex justify-content-center align-items-center">
+      <a data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+        aria-label="Toggle navigation">
+        <i style="font-size: 2rem;" class="bx bxs-joystick"></i>
+      </a>
+      <a class="mx-5 text-dark" data-bs-toggle="offcanvas" data-bs-target="#spinningCanvas"
+        aria-controls="spinningCanvas" aria-label="Toggle navigation">
+        <i style="font-size: 2rem;" class="bx bx-rotate-left"></i>
+      </a>
+      <a data-bs-toggle="offcanvas" data-bs-target="#timmerCanvas" aria-controls="timmerCanvas"
+        aria-label="Toggle navigation">
+        <i style="font-size: 2rem;" class="bx bxs-timer"></i>
+      </a>
+    </div>
+
+
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Main Settings</h5>
@@ -48,6 +61,7 @@
                 <option value="Sport">Sport</option>
                 <option value="Race">Race</option>
                 <option value="FPS">FPS</option>
+                <option value="Logo">HH Logo</option>
 
               </select>
               <label for="floatingSelect">Players</label>
@@ -64,66 +78,113 @@
 
 
         </form>
-        <hr>
+
+      </div>
+
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="spinningCanvas" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="spinningCanvasLabel">Spinning wheel Settings</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+
         <form>
-          <h5 class="offcanvas-title">Spinning wheel settings</h5>
+
 
           <div class="mt-4">
             <div class="form-floating">
-              <input class="form-control spin-name" id="sorted_1"  data-position="1" placeholder="name 1" onkeyup="setSpinName(this)" value="{% if spin_name_1 %}{{spin_name_1[0]['name']}}{% endif %}">
+              <input class="form-control spin-name" id="sorted_1" data-position="1" placeholder="name 1"
+                onkeyup="setSpinName(this)" value="{% if spin_name_1 %}{{spin_name_1[0]['name']}}{% endif %}">
               <label for="sorted_1">Name 1</label>
             </div>
           </div>
           <div class="mt-1">
             <div class="form-floating">
-              <input class="form-control spin-name" id="sorted_2" data-position="2" placeholder="name 2" onkeyup="setSpinName(this)" value="{% if spin_name_2 %}{{spin_name_2[0]['name']}}{% endif %}">
+              <input class="form-control spin-name" id="sorted_2" data-position="2" placeholder="name 2"
+                onkeyup="setSpinName(this)" value="{% if spin_name_2 %}{{spin_name_2[0]['name']}}{% endif %}">
               <label for="sorted_2">Name 2</label>
             </div>
           </div>
           <div class="mt-1">
             <div class="form-floating">
-              <input class="form-control spin-name" id="sorted_3" data-position="3" placeholder="name 3" onkeyup="setSpinName(this)" value="{% if spin_name_3 %}{{spin_name_3[0]['name']}}{% endif %}">
+              <input class="form-control spin-name" id="sorted_3" data-position="3" placeholder="name 3"
+                onkeyup="setSpinName(this)" value="{% if spin_name_3 %}{{spin_name_3[0]['name']}}{% endif %}">
               <label for="sorted_3">Name 3</label>
             </div>
           </div>
           <div class="mt-1">
             <div class="form-floating">
-              <input class="form-control spin-name" id="sorted_4" data-position="4" placeholder="name 4" onkeyup="setSpinName(this)" value="{% if spin_name_4 %}{{spin_name_4[0]['name']}}{% endif %}">
+              <input class="form-control spin-name" id="sorted_4" data-position="4" placeholder="name 4"
+                onkeyup="setSpinName(this)" value="{% if spin_name_4 %}{{spin_name_4[0]['name']}}{% endif %}">
               <label for="sorted_4">Name 4</label>
             </div>
           </div>
           <div class="mt-1">
             <div class="form-floating">
-              <input class="form-control spin-name" id="sorted_5" data-position="5" placeholder="name 5" onkeyup="setSpinName(this)" value="{% if spin_name_5 %}{{spin_name_5[0]['name']}}{% endif %}">
+              <input class="form-control spin-name" id="sorted_5" data-position="5" placeholder="name 5"
+                onkeyup="setSpinName(this)" value="{% if spin_name_5 %}{{spin_name_5[0]['name']}}{% endif %}">
               <label for="sorted_5">Name 5</label>
             </div>
           </div>
           <div class="mt-1">
             <div class="form-floating">
-              <input class="form-control spin-name" id="sorted_6" data-position="6" placeholder="name 6" onkeyup="setSpinName(this)" value="{% if spin_name_6 %}{{spin_name_6[0]['name']}}{% endif %}">
+              <input class="form-control spin-name" id="sorted_6" data-position="6" placeholder="name 6"
+                onkeyup="setSpinName(this)" value="{% if spin_name_6 %}{{spin_name_6[0]['name']}}{% endif %}">
               <label for="sorted_6">Name 6</label>
             </div>
           </div>
           <div class="mt-1">
             <div class="form-floating">
-              <input class="form-control spin-name" id="sorted_7" data-position="7" placeholder="name 7" onkeyup="setSpinName(this)" value="{% if spin_name_7 %}{{spin_name_7[0]['name']}}{% endif %}">
+              <input class="form-control spin-name" id="sorted_7" data-position="7" placeholder="name 7"
+                onkeyup="setSpinName(this)" value="{% if spin_name_7 %}{{spin_name_7[0]['name']}}{% endif %}">
               <label for="sorted_7">Name 7</label>
             </div>
           </div>
           <div class="mt-1">
             <div class="form-floating">
-              <input class="form-control spin-name" id="sorted_8" data-position="8" placeholder="name 8" onkeyup="setSpinName(this)" value="{% if spin_name_8 %}{{spin_name_8[0]['name']}}{% endif %}">
+              <input class="form-control spin-name" id="sorted_8" data-position="8" placeholder="name 8"
+                onkeyup="setSpinName(this)" value="{% if spin_name_8 %}{{spin_name_8[0]['name']}}{% endif %}">
               <label for="sorted_8">Name 8</label>
             </div>
           </div>
           <div class="d-grid gap-2 mt-4">
-            <button class="btn btn-danger spin-now" type="button" >SPIN NOW !!! </button>
+            <button class="btn btn-danger spin-now" type="button">SPIN NOW !!! </button>
 
           </div>
         </form>
       </div>
 
     </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="timmerCanvas" aria-labelledby="timmerCanvasLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="timmerCanvasLabel">COUNTDOWN</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <input data-role="timepicker" data-on-set="setTimmer(arguments)">
+        <div class="d-flex flex-column justify-content-center align-items-center mt-5 count-box">
+
+          <div id="countdown-display" class="countdown">00:00:00</div>
+
+          <div style="font-size: 4rem;">
+            <a id="start-button"><i class='bx bx-play-circle'></i></a>
+            <a style="display: none;" id="pause-button"><i class='bx bx-pause-circle'></i></a>
+            <!-- <button id="reset-button">Resetar</button> -->
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
   </div>
 </nav>
 
@@ -204,109 +265,7 @@
           </div>
         </div>
       </div>
-      <div class=" justify-content-center align-items-center w-100 mt-2">
 
-
-        <!-- <div class="w-50"> -->
-
-        <!-- <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="score" id="Sports" autocomplete="off" checked
-              onclick="$('#pills-home-tab').click()">
-            <label class="btn btn-outline-primary" for="Sports">Sports</label>
-
-            <input type="radio" class="btn-check" name="score" id="Action" autocomplete="off"
-              onclick="$('#pills-profile-tab').click()">
-            <label class="btn btn-outline-primary" for="Action">Action</label>
-
-            <input type="radio" class="btn-check" name="score" id="Race" autocomplete="off"
-              onclick="$('#pills-contact-tab').click()">
-            <label class="btn btn-outline-primary" for="Race">Race</label>
-
-            <input type="radio" class="btn-check" name="score" id="Custom" autocomplete="off"
-              onclick="$('#pills-disabled-tab').click()">
-            <label class="btn btn-outline-primary" for="Custom">Custom</label>
-          </div> -->
-
-
-
-        <!-- </div> -->
-
-        <!-- <div class="w-50 "> -->
-
-        <!-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="display: none;">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-                type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-                type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled"
-                type="button" role="tab" aria-controls="pills-disabled" aria-selected="false">Disabled</button>
-            </li>
-          </ul>
-          <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
-              tabindex="0">
-              <div class="alert alert-light mt-3 ms-2" role="alert">
-                
-                <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                  <label class="btn btn-outline-light text-dark" for="btnradio1">
-                    <img src="./static/img/basketball.png" height="40">
-                  </label>
-                
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                  <label class="btn btn-outline-light text-dark" for="btnradio2">
-                    <img src="./static/img/soccer.png" height="40">
-                  </label>
-                
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                  <label class="btn btn btn-outline-light text-dark" for="btnradio3">
-                    <img src="./static/img/golf.png" height="40">
-                  </label>
-
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-                  <label class="btn btn btn-outline-light text-dark" for="btnradio3">
-                    <img src="./static/img/american.png" height="40">
-                  </label>
-                </div>
-
-
-
-              </div>
-            </div>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
-              tabindex="0">
-              <div class="alert alert-light mt-3 ms-2" role="alert">
-                home
-              </div>
-            </div>
-            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"
-              tabindex="0">
-              <div class="alert alert-light mt-3 ms-2" role="alert">
-                home
-              </div>
-            </div>
-            <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab"
-              tabindex="0">
-              <div class="alert alert-light mt-3 ms-2" role="alert">
-                home
-              </div>
-            </div>
-          </div> -->
-
-
-
-        <!-- </div> -->
-
-      </div>
     </div>
 
 
@@ -318,13 +277,31 @@
 
 
   <div class="alert alert-info position-absolute d-flex justify-content-center align-items-center" role="alert">
-    Game mode > <strong class="me-2">{{configs.game}}</strong> <img src="./static/img/{{filename}}" height="20">
+    Game mode > <strong class="me-2">{{configs.game}}</strong>
+    {% if filename == 'FlagLogo.png'%}
+    <div class="cover-flag">
+      <img src="./static/img/{{filename}}" height="45">
+    </div>
+
+    {% else %}
+    <img src="./static/img/{{filename}}" height="20">
+
+    {% endif %}
+
+
   </div>
 
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
 
+<script src="https://cdn.korzh.com/metroui/v4/js/metro.min.js"></script>
 <script src="../static/js/socket-admin.js"></script>
 <script src="../static/js/action.js"></script>
+<script src="../static/js/countdown.js"></script>
+
+<script>
+
+</script>
 {% endblock %}
