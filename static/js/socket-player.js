@@ -156,7 +156,9 @@ socket.on('spin', function () {
 
 
 socket.on('refresh stream', function () {
-  location.reload();
+  if (window.location.pathname === '/stream') {
+    location.reload();
+  }
 });
 
 socket.on('countDown', function (data) {

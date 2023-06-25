@@ -221,8 +221,7 @@ def spinName():
 
 @socketio.on('refresh')
 def refresh():
-    print('refresh')
-    # emit('refresh stream',broadcast=True)
+    emit('refresh stream',broadcast=True)
 
 @socketio.on('setTimmer')
 def setTimmer(data):
